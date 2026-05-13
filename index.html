@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Constructivismo Jurídico — Curso Especializado</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #f7f6f2;
+      color: #1a1a2e;
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #26215C 0%, #3C3489 60%, #534AB7 100%);
+      color: #EEEDFE;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #CECBF6;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      padding: 7px 18px;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+      text-transform: uppercase;
+      font-family: 'Arial', sans-serif;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: normal;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #CECBF6;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      font-family: 'Arial', sans-serif;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: #fff;
+      color: #3C3489;
+      font-size: 15px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      padding: 15px 34px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-ghost {
+      display: inline-block;
+      color: #CECBF6;
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      padding: 15px 10px;
+    }
+
+    /* LAYOUT */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 4rem 1.5rem; max-width: 780px; margin: 0 auto; }
+    .divider { border: none; border-top: 1px solid #ddd8cc; margin: 0; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #534AB7;
+      font-weight: bold;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: normal;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: #4a4a6a;
+      line-height: 1.85;
+    }
+
+    /* CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e0dbd0;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: 'Arial', sans-serif;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #6a6a8a;
+      line-height: 1.6;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* TEMARIO */
+    .agenda-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 12px; }
+    .agenda-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 1.2rem 1.4rem;
+      background: #fff;
+      border: 1px solid #e0dbd0;
+      border-radius: 12px;
+    }
+    .agenda-num {
+      min-width: 30px; height: 30px;
+      border-radius: 50%;
+      background: #EEEDFE;
+      color: #3C3489;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: bold;
+      font-family: 'Arial', sans-serif;
+      flex-shrink: 0;
+    }
+    .agenda-text h4 {
+      font-size: 0.95rem;
+      font-weight: bold;
+      font-family: 'Arial', sans-serif;
+      color: #1a1a2e;
+      margin-bottom: 3px;
+    }
+    .agenda-text p {
+      font-size: 0.875rem;
+      color: #6a6a8a;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.5;
+    }
+
+    /* INFO CHIPS */
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .info-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #4a4a6a;
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      border: 1px solid #e0dbd0;
+      border-radius: 100px;
+      padding: 7px 16px;
+    }
+    .info-chip span.icon { font-size: 16px; }
+
+    /* REGISTRO */
+    .register-box {
+      background: #EEEDFE;
+      border: 1px solid #AFA9EC;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .register-box h2 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      color: #26215C;
+      margin-bottom: 0.6rem;
+    }
+    .register-box p {
+      font-size: 0.95rem;
+      color: #534AB7;
+      margin-bottom: 1.8rem;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* FORM */
+    .form-group { margin-bottom: 1rem; text-align: left; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-family: 'Arial', sans-serif;
+      color: #3C3489;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #AFA9EC;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-group input:focus { border-color: #534AB7; }
+
+    .btn-register {
+      display: inline-block;
+      background: #3C3489;
+      color: #fff;
+      font-size: 15px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.15s;
+    }
+    .btn-register:hover { background: #26215C; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 13px;
+      color: #8a8aaa;
+      border-top: 1px solid #ddd8cc;
+      font-family: 'Arial', sans-serif;
+    }
+
+    @media (max-width: 500px) {
+      .hero { padding: 4rem 1.2rem 3.5rem; }
+      .section { padding: 3rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Curso Especializado</div>
+  <h1>Constructivismo Jurídico</h1>
+  <p>Explora los fundamentos filosóficos del derecho como construcción social. Un enfoque riguroso y contemporáneo para juristas y estudiantes avanzados.</p>
+  <div class="hero-btns">
+    <a href="#registro" class="btn-primary">Inscribirme ahora</a>
+    <a href="#temario" class="btn-ghost">Ver temario</a>
+  </div>
+</div>
+
+<!-- ¿DE QUÉ TRATA? -->
+<div class="section">
+  <div class="section-label">¿De qué trata?</div>
+  <div class="section-title">Derecho como construcción social</div>
+  <div class="section-body">El constructivismo jurídico sostiene que el derecho no es un dato dado en la naturaleza, sino una creación colectiva mediada por el lenguaje, la cultura y las instituciones. Este curso analiza sus principales corrientes, autores y consecuencias para la práctica y teoría jurídica contemporánea.</div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">📚</div>
+      <h3>Fundamentos teóricos</h3>
+      <p>Kelsen, Hart, Dworkin y las escuelas constructivistas modernas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>Lenguaje y norma</h3>
+      <p>La dimensión lingüística del ordenamiento jurídico.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚖️</div>
+      <h3>Aplicación práctica</h3>
+      <p>Argumentación e interpretación desde una perspectiva constructivista.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TEMARIO -->
+<div class="section" id="temario">
+  <div class="section-label">Contenido</div>
+  <div class="section-title">Temario del curso</div>
+
+  <div class="agenda-list">
+    <div class="agenda-item">
+      <div class="agenda-num">1</div>
+      <div class="agenda-text">
+        <h4>Introducción al constructivismo jurídico</h4>
+        <p>Contexto histórico y filosófico. Diferencias con el iusnaturalismo y el positivismo clásico.</p>
+      </div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">2</div>
+      <div class="agenda-text">
+        <h4>Principales corrientes y autores</h4>
+        <p>Rawls, Habermas, Alexy y el constructivismo latinoamericano.</p>
+      </div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">3</div>
+      <div class="agenda-text">
+        <h4>Norma, validez y legitimidad</h4>
+        <p>¿Cómo se construyen las normas jurídicas? Criterios de validez y aceptación social.</p>
+      </div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">4</div>
+      <div class="agenda-text">
+        <h4>Interpretación y argumentación</h4>
+        <p>Métodos hermenéuticos desde el enfoque constructivista. Casos prácticos.</p>
+      </div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">5</div>
+      <div class="agenda-text">
+        <h4>Retos contemporáneos</h4>
+        <p>Derechos humanos, pluralismo jurídico y el derecho en sociedades complejas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- REGISTRO -->
+<div class="section" id="registro">
+  <div class="section-label">Información</div>
+  <div class="section-title">Detalles del curso</div>
+
+  <div class="info-row">
+    <div class="info-chip"><span class="icon">📅</span> Fecha por confirmar</div>
+    <div class="info-chip"><span class="icon">🕐</span> Modalidad por definir</div>
+    <div class="info-chip"><span class="icon">📍</span> Lugar por confirmar</div>
+    <div class="info-chip"><span class="icon">👥</span> Cupos limitados</div>
+  </div>
+
+  <div class="register-box">
+    <h2>¿Listo para inscribirte?</h2>
+    <p>Déjanos tus datos y te contactamos con toda la información.</p>
+
+    <div class="form-group">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Tu nombre">
+    </div>
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" placeholder="tucorreo@ejemplo.com">
+    </div>
+    <div class="form-group">
+      <label for="tel">Teléfono (opcional)</label>
+      <input type="tel" id="tel" placeholder="+52 ...">
+    </div>
+    <button class="btn-register" onclick="alert('¡Gracias por tu interés! Nos pondremos en contacto pronto.')">Solicitar inscripción</button>
+  </div>
+</div>
+
+<footer>
+  Constructivismo Jurídico &mdash; Curso Especializado &mdash; Todos los derechos reservados
+</footer>
+
+</body>
+</html>
